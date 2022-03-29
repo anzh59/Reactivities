@@ -21,6 +21,7 @@
     <Folder Include="src\features\activities\form\" />
     <Folder Include="src\features\home\" />
     <Folder Include="src\features\errors\" />
+    <Folder Include="src\features\profiles\" />
     <Folder Include="src\features\users\" />
   </ItemGroup>
   <!-- This target is copied from the ASP.NET SPA template in order to ensure node_modules are in place. -->
