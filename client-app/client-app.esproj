@@ -15,6 +15,7 @@
     <Folder Include="src\app\api\" />
     <Folder Include="src\app\common\form\" />
     <Folder Include="src\app\common\modals\" />
+    <Folder Include="src\app\common\imageUpload\" />
     <Folder Include="src\app\common\options\" />
     <Folder Include="src\features\activities\dashboard\" />
     <Folder Include="src\features\activities\details\" />
