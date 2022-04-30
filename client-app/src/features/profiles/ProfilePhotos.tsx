@@ -11,7 +11,7 @@ interface Props {
 
 export default observer(function ProfielPhotos({ profile }: Props) {
     const { profileStore: { isCurrentUser, uploadPhoto,
-        uploading, loading, setMainPhoto, deletePhoto } } = useStore();
+        uploading, loading, setMainPhoto, deletePhoto }, activityStore } = useStore();
     const [addPhotoMode, setAddPhotoMode] = useState(false);
     const [target, setTarget] = useState('');
 
@@ -21,7 +21,7 @@ export default observer(function ProfielPhotos({ profile }: Props) {
 
     function handleSetMainPhoto(photo: Photo, e: SyntheticEvent<HTMLButtonElement>) {
         setTarget(e.currentTarget.name);
-        setMainPhoto(photo);
+        setMainPhoto(photo).then(() => activityStore.loadActivities());
     }
 
     function handleDeletePhoto(photo: Photo, e: SyntheticEvent<HTMLButtonElement>) {
