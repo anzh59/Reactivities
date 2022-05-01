@@ -49,18 +49,13 @@ namespace Application.Profiles
                 user.DisplayName = request.Profile.DisplayName;
                 user.Bio = request.Profile.Bio;
 
-                _context.ChangeTracker.AutoDetectChangesEnabled = false;
-                try
-                {
-                    _context.ChangeTracker.DetectChanges();
-                    var result = await _context.SaveChangesAsync() > 0;
-                }
-                finally
-                {
-                    _context.ChangeTracker.AutoDetectChangesEnabled = true;
-                }
+                _context.Entry(user).State = EntityState.Modified;
+               
+                var success = await _context.SaveChangesAsync() > 0;
 
-                return Result<Unit>.Success(Unit.Value);
+                if (success) return Result<Unit>.Success(Unit.Value);
+
+                return Result<Unit>.Failure("Problem updating profile");
             }
         }
     }
